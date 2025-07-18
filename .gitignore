@@ -168,4 +168,7 @@ cython_debug/
 *_experiment/
 
 # Explicitly allow requirements.txt
-!requirements.txt 
+!requirements.txt
+
+# Large dataset folders (medical imaging data)
+300*/ 
