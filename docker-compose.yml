@@ -1,0 +1,27 @@
+services:
+  sparse_view_head_ct:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USER_ID: ${LOCAL_UID:-1000}
+        GROUP_ID: ${LOCAL_GID:-1000}
+    image: sparse_view_head_ct_image
+    container_name: sparse_view_head_ct_container
+    network_mode: host
+    volumes:
+      - .:/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ../data:/workspace/data
+    working_dir: /workspace
+    environment:
+      - PYTHONPATH=/workspace
+      - DISPLAY=${DISPLAY:-:0}
+    # Enable GPU support if available
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu] 
