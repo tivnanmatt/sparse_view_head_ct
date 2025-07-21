@@ -172,3 +172,8 @@ cython_debug/
 
 # Large dataset folders (medical imaging data)
 300*/ 
+
+ct_laboratory/
+gmi/
+
+data/

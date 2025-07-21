@@ -19,6 +19,9 @@ RUN pip install torch torchvision torchaudio --index-url https://download.pytorc
 # Install ninja for faster builds
 RUN pip install ninja
 
+# Set PyTorch library path in environment
+ENV LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/torch/lib:$LD_LIBRARY_PATH
+
 # Cache buster for user creation - rebuild from here if UID/GID changes
 ARG CACHEBUST=1
 
